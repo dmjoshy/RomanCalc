@@ -1,3 +1,3 @@
 # RomanCalc
 
-Inital Commit
+0.1: Initial defs
