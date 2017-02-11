@@ -16,6 +16,6 @@
 
 void main(int argc, char **argv)
 {
-  RomanAdd("I","I");
+  RomanAdd("MMCMXIX","I");
   RomanSub("I","I");
 }
