@@ -13,8 +13,8 @@
 
 //const char *tens[10] = {"foo", "bar", "bletch", ...};
 //const char *units[10] = {"foo", "bar", "bletch", ...};
-void RomanAdd(char*, char *);
-void RomanSub(char*, char *);
+void RomanAdd(char*, char *, char*);
+void RomanSub(char*, char *, char*);
 void ToRoman(int, char*);
 int ToNum(char*);
 int findplace(char*, char, char);

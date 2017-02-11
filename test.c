@@ -16,6 +16,9 @@
 
 void main(int argc, char **argv)
 {
-  RomanAdd("MMCMXIX","I");
-  RomanSub("I","I");
+	char *s;
+	s = (char *) malloc(30);
+	RomanAdd("XXXV","XLII",s);
+  	//RomanSub("MMCMXIX","I",s);
+  	printf("Result=%s\n",s);
 }
