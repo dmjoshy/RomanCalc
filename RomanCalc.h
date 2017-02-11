@@ -15,6 +15,6 @@
 //const char *units[10] = {"foo", "bar", "bletch", ...};
 void RomanAdd(char*, char *);
 void RomanSub(char*, char *);
-int ToRoman(char*);
+void ToRoman(int, char*);
 int ToNum(char*);
 int findplace(char*, char, char);

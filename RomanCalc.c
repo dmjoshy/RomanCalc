@@ -9,6 +9,7 @@
  *  Revision History.:
  *  0.1: Function defs
  *  0.2: Added to Num conversion
+ *	0.3: Added to Roman conversion
  *****************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,11 +17,16 @@
 #include "RomanCalc.h"
 const char *thous[3] = {"M", "MM", "MMM"};
 const char *huns[9] = {"C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
-const char *tens[9] = {"X", "XX", "XXXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
+const char *tens[9] = {"X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
 const char *ones[9] = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
 // ****** Calc OPERATIONS ****** 
 void RomanAdd(char *a, char *b){
-	printf("%s=%d\n",a,ToNum(a));
+	//printf("%s=%d\n",a,ToNum(a));
+	char *s;
+	s = (char *) malloc(30);
+	ToRoman(ToNum(a)+ToNum(b),s);
+	printf("%s\n",s);
+	
 	printf("Addition end\n");
 }
 
@@ -28,8 +34,20 @@ void RomanSub(char *a, char *b){
 	printf("Subtraction end\n");
 }
 // ****** Conversion OPERATIONS ****** 
-int ToRoman(char *a){
-	
+void ToRoman(int a, char *res){
+	int n1,n2,n3,n4;
+	n1=a/1000;
+	n2=(a%1000)/100;
+	n3=(a%100)/10;
+	n4=a%10;
+	if(n1!=0)
+		strcat(res,thous[n1-1]);
+	if(n2!=0)
+		strcat(res,huns[n2-1]);
+	if(n3!=0)
+		strcat(res,tens[n3-1]);
+	if(n4!=0)
+		strcat(res,ones[n4-1]);
 }
 
 int ToNum(char *a){
