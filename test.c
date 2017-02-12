@@ -49,6 +49,20 @@ START_TEST (test_complex_1)
   	ck_assert_str_eq(e, "IV");
 }
 END_TEST
+START_TEST (test_complex_2)
+{
+  	char a[10]="M";
+  	char b[10]="L";
+  	char c[10]="X";
+  	char d[10]="";
+  	char e[10]="";
+  	RomanAdd(a,b,d);
+  	RomanSub(d,c,e);
+
+  	ck_assert_str_eq(d, "ML");
+  	ck_assert_str_eq(e, "MXL");
+}
+END_TEST
 
 Suite * roman_suite(void)
 {
@@ -63,6 +77,7 @@ Suite * roman_suite(void)
     tcase_add_test(tc_core, test_basic_add);
     tcase_add_test(tc_core, test_basic_sub);
     tcase_add_test(tc_core, test_complex_1);
+    tcase_add_test(tc_core, test_complex_2);
     suite_add_tcase(s, tc_core);
 
     return s;
