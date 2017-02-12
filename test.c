@@ -14,24 +14,42 @@
 #include <stdlib.h>
 #include <check.h>
 #include "RomanCalc.h"
-
 START_TEST (test_basic_add)
 {
-  	char a[10]="IV";
-  	char b[10]="III";
+  	char a[10]="I";
+  	char b[10]="II";
   	char c[10]="";
   	RomanAdd(a,b,c);
-  	ck_assert_str_eq(c, "VII");
+  	ck_assert_str_eq(c, "III");
+}
+END_TEST
+START_TEST (test_basic_sub)
+{
+  	char a[10]="V";
+  	char b[10]="II";
+  	char c[10]="";
+  	RomanSub(a,b,c);
+  	ck_assert_str_eq(c, "III");
 }
 END_TEST
 
-START_TEST (test_basic_sub)
+START_TEST (test_complex_add)
 {
-  	char a[10]="IV";
-  	char b[10]="III";
+  	char a[10]="CCCXCIX";
+  	char b[10]="DLXXIX";
+  	char c[10]="";
+  	RomanAdd(a,b,c);
+  	ck_assert_str_eq(c, "CMLXXVIII");
+}
+END_TEST
+
+START_TEST (test_complex_sub)
+{
+  	char a[10]="DLXXIX";
+  	char b[10]="CCCXCIX";
   	char c[10]="";
   	RomanSub(a,b,c);
-  	ck_assert_str_eq(c, "I");
+  	ck_assert_str_eq(c, "CLXXX");
 }
 END_TEST
 
@@ -64,6 +82,8 @@ START_TEST (test_complex_2)
 }
 END_TEST
 
+
+
 Suite * roman_suite(void)
 {
     Suite *s;
@@ -73,9 +93,10 @@ Suite * roman_suite(void)
 
     /* Core test case */
     tc_core = tcase_create("Core");
-
     tcase_add_test(tc_core, test_basic_add);
     tcase_add_test(tc_core, test_basic_sub);
+    tcase_add_test(tc_core, test_complex_add);
+    tcase_add_test(tc_core, test_complex_sub);
     tcase_add_test(tc_core, test_complex_1);
     tcase_add_test(tc_core, test_complex_2);
     suite_add_tcase(s, tc_core);
