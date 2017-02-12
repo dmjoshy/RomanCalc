@@ -8,7 +8,7 @@
  *
  *  Revision History.:
  *  0.1: Basic Tests
- *
+ *  0.5: Green on Basic Add
  *****************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,11 +17,21 @@
 
 START_TEST (test_basic_add)
 {
-  	char a[10]="I";
-  	char b[10]="I";
-  	char c[10];
+  	char a[10]="IV";
+  	char b[10]="III";
+  	char c[10]="";
   	RomanAdd(a,b,c);
-  	ck_assert_str_eq(c, "II");
+  	ck_assert_str_eq(c, "VII");
+}
+END_TEST
+
+START_TEST (test_basic_sub)
+{
+  	char a[10]="IV";
+  	char b[10]="III";
+  	char c[10]="";
+  	RomanSub(a,b,c);
+  	ck_assert_str_eq(c, "I");
 }
 END_TEST
 
@@ -36,6 +46,7 @@ Suite * roman_suite(void)
     tc_core = tcase_create("Core");
 
     tcase_add_test(tc_core, test_basic_add);
+    tcase_add_test(tc_core, test_basic_sub);
     suite_add_tcase(s, tc_core);
 
     return s;

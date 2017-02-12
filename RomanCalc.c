@@ -22,22 +22,11 @@ const char *tens[9] = {"X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
 const char *ones[9] = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
 // ****** Calc OPERATIONS ****** 
 void RomanAdd(char *a, char *b, char *res){
-	//printf("%s=%d\n",a,ToNum(a));
-	char *s;
-	s = (char *) malloc(30);
-	ToRoman(ToNum(a)+ToNum(b),s);
-	//printf("Result=%s\n",s);
-	strcpy(res,s);
-	
+	ToRoman(ToNum(a)+ToNum(b),res);	
 }
 
 void RomanSub(char *a, char *b, char *res){
-	char *s;
-	s = (char *) malloc(30);
-	ToRoman(ToNum(a)-ToNum(b),s);
-	//printf("Result=%s\n",s);
-	strcpy(res,s);
-	
+	ToRoman(ToNum(a)-ToNum(b),res);
 }
 // ****** Conversion OPERATIONS ****** 
 void ToRoman(int a, char *res){
