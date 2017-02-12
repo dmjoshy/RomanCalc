@@ -1,6 +1,5 @@
 all: RomanCalc.c
 	@gcc -c RomanCalc.c
-	@ar rcs RomanCalc.a RomanCalc.o
 	
 clean:
 	@rm -f *.o 
